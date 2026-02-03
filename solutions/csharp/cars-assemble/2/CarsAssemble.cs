@@ -1,0 +1,42 @@
+static class AssemblyLine
+{
+    public static double SuccessRate(int speed)
+    {
+      if (speed == 0)
+      {
+        return 0.0;
+      }
+      else if (speed <= 4)
+      {
+        return (double)100/100;
+      }
+      else if (speed <= 8)
+      {
+        return (double)90/100;
+      }
+      else if (speed == 9)
+      {
+        return (double)80/100;
+      }
+      else if (speed == 10)
+      {
+        return (double)77/100;
+      }
+      else
+      {
+        return 0.0;
+      }
+    }
+    
+    public static double ProductionRatePerHour(int speed)
+    {
+      double productionRate =  (double)(speed * 221) * SuccessRate(speed);
+      return productionRate;
+    }
+
+    public static int WorkingItemsPerMinute(int speed)
+    {
+      int numberOfWorkingItems = (int)ProductionRatePerHour(speed) / 60;
+      return numberOfWorkingItems;
+    }
+}
